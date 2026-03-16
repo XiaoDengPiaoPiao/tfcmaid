@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "tfcmaid.refmap.json",
   "mixins": [
-    "SmartSlabMixin",
     "TaskManagerMixin",
     "TaskFeedOwnerMixin"
   ],
