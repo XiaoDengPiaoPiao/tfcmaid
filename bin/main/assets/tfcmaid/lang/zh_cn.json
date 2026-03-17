@@ -4,5 +4,8 @@
   "task.tfcmaid.tfc_shears.condition.has_shears": "主手持有剪刀",
 
   "task.tfcmaid.tfc_feather": "拔毛",
-  "task.tfcmaid.tfc_feather.desc": "女仆会帮你拔飞禽的毛。"
+  "task.tfcmaid.tfc_feather.desc": "女仆会帮你拔飞禽的毛。",
+
+  "task.tfcmaid.tfc_milk": "挤奶",
+  "task.tfcmaid.tfc_milk.desc": "女仆会帮你挤奶。"
 }
