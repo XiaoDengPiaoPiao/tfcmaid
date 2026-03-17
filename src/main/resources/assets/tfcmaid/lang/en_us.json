@@ -1,0 +1,5 @@
+{
+  "task.tfcmaid.tfc_shears": "Shearing",
+  "task.tfcmaid.tfc_shears.desc": "The maid will help you shear sheep and other animals.",
+  "task.tfcmaid.tfc_shears.condition.has_shears": "Holding shears in the main hand."
+}
