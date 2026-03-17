@@ -7,25 +7,21 @@ import com.github.tartaricacid.touhoulittlemaid.init.InitSounds;
 import com.github.tartaricacid.touhoulittlemaid.util.SoundUtil;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
-import net.dries007.tfc.common.capabilities.Capabilities;
-import net.dries007.tfc.common.fluids.FluidHelpers;
-import net.dries007.tfc.util.Helpers;
+import net.dries007.tfc.common.capabilities.food.FoodCapability;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.ai.behavior.BehaviorControl;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.xdpp.tfcmaid.Tfcmaid;
-import net.xdpp.tfcmaid.behavior.MaidMilkTask;
+import net.xdpp.tfcmaid.behavior.MaidFeedTask;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class TaskTFCMilk implements IMaidTask {
-    public static final ResourceLocation UID = ResourceLocation.parse(Tfcmaid.MODID + ":tfc_milk");
+public class TaskTFCFeed implements IMaidTask {
+    public static final ResourceLocation UID = ResourceLocation.parse(Tfcmaid.MODID + ":tfc_feed");
 
     @Override
     public ResourceLocation getUid() {
@@ -34,7 +30,7 @@ public class TaskTFCMilk implements IMaidTask {
 
     @Override
     public ItemStack getIcon() {
-        return Items.MILK_BUCKET.getDefaultInstance();
+        return Items.WHEAT.getDefaultInstance();
     }
 
     @Nullable
@@ -45,49 +41,40 @@ public class TaskTFCMilk implements IMaidTask {
 
     @Override
     public List<Pair<Integer, BehaviorControl<? super EntityMaid>>> createBrainTasks(EntityMaid maid) {
-        return Lists.newArrayList(Pair.of(5, new MaidMilkTask(0.6f)));
+        return Lists.newArrayList(Pair.of(5, new MaidFeedTask(0.6f)));
     }
 
     @Override
     public FunctionCallSwitchResult onFunctionCallSwitch(EntityMaid maid) {
-        if (hasContainer(maid)) {
+        if (hasFood(maid)) {
             return FunctionCallSwitchResult.NO_CHANGE;
         }
         return FunctionCallSwitchResult.MISSING_REQUIRED_ITEM;
     }
 
-    private boolean hasContainer(EntityMaid maid) {
+    private boolean hasFood(EntityMaid maid) {
         ItemStack mainHand = maid.getMainHandItem();
         
-        if (!mainHand.isEmpty()) {
-            ItemStack singleStack = mainHand.copyWithCount(1);
-            IFluidHandlerItem handler = Helpers.getCapability(singleStack, Capabilities.FLUID_ITEM);
-            if (handler != null && canAcceptMoreMilk(handler)) {
-                return true;
-            }
+        if (!mainHand.isEmpty() && isValidFood(mainHand)) {
+            return true;
         }
 
         var backpack = maid.getAvailableBackpackInv();
         for (int i = 0; i < backpack.getSlots(); i++) {
             ItemStack stack = backpack.getStackInSlot(i);
-            if (!stack.isEmpty()) {
-                ItemStack singleStack = stack.copyWithCount(1);
-                IFluidHandlerItem handler = Helpers.getCapability(singleStack, Capabilities.FLUID_ITEM);
-                if (handler != null && canAcceptMoreMilk(handler)) {
-                    return true;
-                }
+            if (!stack.isEmpty() && isValidFood(stack)) {
+                return true;
             }
         }
         return false;
     }
 
-    private boolean canAcceptMoreMilk(IFluidHandlerItem handler) {
-        int simulatedFill = handler.fill(new FluidStack(net.minecraftforge.common.ForgeMod.MILK.get(), FluidHelpers.BUCKET_VOLUME), IFluidHandlerItem.FluidAction.SIMULATE);
-        return simulatedFill > 0;
+    private boolean isValidFood(ItemStack stack) {
+        return !FoodCapability.isRotten(stack);
     }
 
     @Override
     public List<Pair<String, Predicate<EntityMaid>>> getConditionDescription(EntityMaid maid) {
-        return Lists.newArrayList(Pair.of("has_container", this::hasContainer));
+        return Lists.newArrayList(Pair.of("has_food", this::hasFood));
     }
 }

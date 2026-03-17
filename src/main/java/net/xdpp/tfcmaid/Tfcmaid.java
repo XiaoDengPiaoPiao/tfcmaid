@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.xdpp.tfcmaid.config.FeedConfigManager;
 import net.xdpp.tfcmaid.config.TaskConfigManager;
 import org.slf4j.Logger;
 
@@ -34,6 +35,8 @@ public class Tfcmaid {
     public Tfcmaid() {
         // 初始化任务配置管理器
         TaskConfigManager.initialize();
+        // 初始化喂养配置管理器
+        FeedConfigManager.initialize();
     }
 
     // SubscribeEvent 注解，让事件总线自动发现并调用方法

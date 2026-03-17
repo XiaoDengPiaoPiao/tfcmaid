@@ -7,5 +7,14 @@
   "task.tfcmaid.tfc_feather.desc": "The maid will help you feather birds.",
 
   "task.tfcmaid.tfc_milk": "Milking",
-  "task.tfcmaid.tfc_milk.desc": "The maid will help you milk animals."
+  "task.tfcmaid.tfc_milk.desc": "The maid will help you milk animals.",
+  "task.tfcmaid.tfc_milk.condition.has_container": "Has available container in main hand or backpack.",
+
+  "task.tfcmaid.tfc_feed": "Feeding",
+  "task.tfcmaid.tfc_feed.desc": "The maid will help you feed animals.",
+  "task.tfcmaid.tfc_feed.condition.has_food": "Has food for animals in main hand or backpack.",
+
+  "task.tfcmaid.tfc_kill_old": "Butcher",
+  "task.tfcmaid.tfc_kill_old.desc": "The maid will kill aged animals.",
+  "task.tfcmaid.tfc_kill_old.condition.has_weapon": "Holding weapon in main hand."
 }
