@@ -2,10 +2,8 @@ package net.xdpp.tfcmaid.behavior;
 
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.brain.task.MaidCheckRateTask;
 import com.github.tartaricacid.touhoulittlemaid.entity.passive.EntityMaid;
-import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import com.github.tartaricacid.touhoulittlemaid.inventory.chest.ChestManager;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemWirelessIO;
-import com.github.tartaricacid.touhoulittlemaid.item.bauble.WirelessIOBauble;
 import com.google.common.collect.ImmutableMap;
 import net.dries007.tfc.common.capabilities.food.FoodCapability;
 import net.dries007.tfc.common.entities.livestock.TFCAnimalProperties;
@@ -23,6 +21,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.xdpp.tfcmaid.config.FeedConfigManager;
+import net.xdpp.tfcmaid.util.WirelessIOHelper;
 
 import java.util.*;
 
@@ -122,7 +121,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
                 var backpack = maid.getAvailableBackpackInv();
                 ItemStack remaining = ItemHandlerHelper.insertItemStacked(backpack, food.getCraftingRemainingItem().copy(), false);
                 if (!remaining.isEmpty()) {
-                    remaining = tryInsertToWirelessIOChest(maid, remaining);
+                    remaining = WirelessIOHelper.tryInsertToChest(maid, remaining);
                 }
             }
             
@@ -192,7 +191,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
                 if (!mainHand.isEmpty()) {
                     ItemStack remaining = ItemHandlerHelper.insertItemStacked(backpack, mainHand, false);
                     if (!remaining.isEmpty()) {
-                        remaining = tryInsertToWirelessIOChest(maid, remaining);
+                        remaining = WirelessIOHelper.tryInsertToChest(maid, remaining);
                     }
                     if (!remaining.isEmpty()) {
                         backpack.insertItem(i, extracted, false);
@@ -204,7 +203,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
             }
         }
 
-        ItemStack wirelessIO = getWirelessIOBauble(maid);
+        ItemStack wirelessIO = WirelessIOHelper.getWirelessIOBauble(maid);
         if (!wirelessIO.isEmpty()) {
             ItemStack foodFromChest = findFoodInWirelessIOChest(maid, wirelessIO, mainHand);
             if (!foodFromChest.isEmpty()) {
@@ -246,15 +245,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
 
                         ItemStack stack = chestInv.getStackInSlot(i);
                         if (!stack.isEmpty() && isValidFood(stack)) {
-                            boolean allowMove = isBlacklist;
-                            for (int j = 0; j < filterList.getSlots(); j++) {
-                                ItemStack filterItem = filterList.getStackInSlot(j);
-                                boolean isEqual = ItemStack.isSameItem(stack, filterItem);
-                                if (isEqual) {
-                                    allowMove = !isBlacklist;
-                                    break;
-                                }
-                            }
+                            boolean allowMove = WirelessIOHelper.isItemAllowed(wirelessIO, stack);
 
                             if (allowMove) {
                                 ItemStack extracted = chestInv.extractItem(i, 1, false);
@@ -281,61 +272,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
         return ItemStack.EMPTY;
     }
 
-    private ItemStack tryInsertToWirelessIOChest(EntityMaid maid, ItemStack stack) {
-        ItemStack wirelessIO = getWirelessIOBauble(maid);
-        if (wirelessIO.isEmpty()) {
-            return stack;
-        }
 
-        var bindingPos = ItemWirelessIO.getBindingPos(wirelessIO);
-        if (bindingPos == null || !maid.isWithinRestriction(bindingPos)) {
-            return stack;
-        }
-
-        BlockEntity te = maid.level().getBlockEntity(bindingPos);
-        if (te == null) {
-            return stack;
-        }
-
-        for (var type : ChestManager.getAllChestTypes()) {
-            if (type.isChest(te)) {
-                IItemHandler chestInv = te.getCapability(ForgeCapabilities.ITEM_HANDLER, null).orElse(null);
-                if (chestInv != null) {
-                    boolean isBlacklist = ItemWirelessIO.isBlacklist(wirelessIO);
-                    IItemHandler filterList = ItemWirelessIO.getFilterList(wirelessIO);
-                    byte[] slotConfig = ItemWirelessIO.getSlotConfig(wirelessIO);
-                    boolean[] slotConfigData = slotConfig != null ? bytes2Booleans(slotConfig, SLOT_NUM) : null;
-
-                    boolean allowMove = isBlacklist;
-                    for (int j = 0; j < filterList.getSlots(); j++) {
-                        ItemStack filterItem = filterList.getStackInSlot(j);
-                        boolean isEqual = ItemStack.isSameItem(stack, filterItem);
-                        if (isEqual) {
-                            allowMove = !isBlacklist;
-                            break;
-                        }
-                    }
-
-                    if (allowMove) {
-                        return WirelessIOBauble.insertItemStacked(chestInv, stack, false, slotConfigData);
-                    }
-                }
-                break;
-            }
-        }
-        return stack;
-    }
-
-    private ItemStack getWirelessIOBauble(EntityMaid maid) {
-        var baubleHandler = maid.getMaidBauble();
-        for (int i = 0; i < baubleHandler.getSlots(); i++) {
-            ItemStack stack = baubleHandler.getStackInSlot(i);
-            if (stack.is(InitItems.WIRELESS_IO.get())) {
-                return stack;
-            }
-        }
-        return ItemStack.EMPTY;
-    }
 
     private NearestVisibleLivingEntities getEntities(EntityMaid maid) {
         return maid.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES).orElse(NearestVisibleLivingEntities.empty());

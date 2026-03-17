@@ -2,7 +2,6 @@ package net.xdpp.tfcmaid.behavior;
 
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.brain.task.MaidCheckRateTask;
 import com.github.tartaricacid.touhoulittlemaid.entity.passive.EntityMaid;
-import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import com.github.tartaricacid.touhoulittlemaid.inventory.chest.ChestManager;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemWirelessIO;
 import com.github.tartaricacid.touhoulittlemaid.item.bauble.WirelessIOBauble;
@@ -20,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
+import net.xdpp.tfcmaid.util.WirelessIOHelper;
 
 import static com.github.tartaricacid.touhoulittlemaid.util.BytesBooleansConvert.bytes2Booleans;
 
@@ -78,7 +78,7 @@ public class MaidKillOldTask extends MaidCheckRateTask {
     }
     
     private void clearBackpackToWirelessIO(EntityMaid maid) {
-        ItemStack wirelessIO = getWirelessIOBauble(maid);
+        ItemStack wirelessIO = WirelessIOHelper.getWirelessIOBauble(maid);
         if (wirelessIO.isEmpty()) {
             return;
         }
@@ -109,16 +109,7 @@ public class MaidKillOldTask extends MaidCheckRateTask {
                             continue;
                         }
 
-                        boolean allowMove = isBlacklist;
-                        for (int j = 0; j < filterList.getSlots(); j++) {
-                            ItemStack filterItem = filterList.getStackInSlot(j);
-                            boolean isEqual = ItemStack.isSameItem(stack, filterItem);
-                            if (isEqual) {
-                                allowMove = !isBlacklist;
-                                break;
-                            }
-                        }
-
+                        boolean allowMove = WirelessIOHelper.isItemAllowed(wirelessIO, stack);
                         if (allowMove) {
                             ItemStack remaining = WirelessIOBauble.insertItemStacked(chestInv, stack.copy(), false, slotConfigData);
                             int movedCount = stack.getCount() - remaining.getCount();
@@ -131,17 +122,6 @@ public class MaidKillOldTask extends MaidCheckRateTask {
                 break;
             }
         }
-    }
-
-    private ItemStack getWirelessIOBauble(EntityMaid maid) {
-        var baubleHandler = maid.getMaidBauble();
-        for (int i = 0; i < baubleHandler.getSlots(); i++) {
-            ItemStack stack = baubleHandler.getStackInSlot(i);
-            if (stack.is(InitItems.WIRELESS_IO.get())) {
-                return stack;
-            }
-        }
-        return ItemStack.EMPTY;
     }
 
     private NearestVisibleLivingEntities getEntities(EntityMaid maid) {

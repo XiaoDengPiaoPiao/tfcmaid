@@ -2,10 +2,8 @@ package net.xdpp.tfcmaid.behavior;
 
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.brain.task.MaidCheckRateTask;
 import com.github.tartaricacid.touhoulittlemaid.entity.passive.EntityMaid;
-import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
 import com.github.tartaricacid.touhoulittlemaid.inventory.chest.ChestManager;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemWirelessIO;
-import com.github.tartaricacid.touhoulittlemaid.item.bauble.WirelessIOBauble;
 import com.google.common.collect.ImmutableMap;
 import net.dries007.tfc.common.capabilities.Capabilities;
 import net.dries007.tfc.common.entities.livestock.DairyAnimal;
@@ -29,7 +27,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
-
+import net.xdpp.tfcmaid.util.WirelessIOHelper;
 
 import static com.github.tartaricacid.touhoulittlemaid.util.BytesBooleansConvert.bytes2Booleans;
 
@@ -109,7 +107,7 @@ public class MaidMilkTask extends MaidCheckRateTask {
                                     
                                     // 如果背包满了，尝试通过无线IO存入箱子
                                     if (!remaining.isEmpty()) {
-                                        remaining = tryInsertToWirelessIOChest(maid, remaining);
+                                        remaining = WirelessIOHelper.tryInsertToChest(maid, remaining);
                                     }
                                     
                                     // 如果还是有剩余，停止挤奶
@@ -160,7 +158,7 @@ public class MaidMilkTask extends MaidCheckRateTask {
                         ItemStack remaining = ItemHandlerHelper.insertItemStacked(backpack, mainHand, false);
                         // 如果背包满了，尝试通过无线IO存入箱子
                         if (!remaining.isEmpty()) {
-                            remaining = tryInsertToWirelessIOChest(maid, remaining);
+                            remaining = WirelessIOHelper.tryInsertToChest(maid, remaining);
                         }
                         // 如果还是有剩余，放回主手，放弃装备
                         if (!remaining.isEmpty()) {
@@ -176,7 +174,7 @@ public class MaidMilkTask extends MaidCheckRateTask {
         }
 
         // 背包里没有，尝试从wireless_io绑定的箱子中获取
-        ItemStack wirelessIO = getWirelessIOBauble(maid);
+        ItemStack wirelessIO = WirelessIOHelper.getWirelessIOBauble(maid);
         if (!wirelessIO.isEmpty()) {
             BlockPos bindingPos = ItemWirelessIO.getBindingPos(wirelessIO);
             if (bindingPos != null && maid.isWithinRestriction(bindingPos)) {
@@ -201,15 +199,7 @@ public class MaidMilkTask extends MaidCheckRateTask {
                                     ItemStack stack = chestInv.getStackInSlot(i);
                                     if (!stack.isEmpty()) {
                                         // 检查物品是否允许移动
-                                        boolean allowMove = isBlacklist;
-                                        for (int j = 0; j < filterList.getSlots(); j++) {
-                                            ItemStack filterItem = filterList.getStackInSlot(j);
-                                            boolean isEqual = ItemStack.isSameItem(stack, filterItem);
-                                            if (isEqual) {
-                                                allowMove = !isBlacklist;
-                                                break;
-                                            }
-                                        }
+                                        boolean allowMove = WirelessIOHelper.isItemAllowed(wirelessIO, stack);
 
                                         if (allowMove) {
                                             ItemStack singleStack = stack.copyWithCount(1);
@@ -250,64 +240,7 @@ public class MaidMilkTask extends MaidCheckRateTask {
         return false;
     }
 
-    private ItemStack tryInsertToWirelessIOChest(EntityMaid maid, ItemStack stack) {
-        ItemStack wirelessIO = getWirelessIOBauble(maid);
-        if (wirelessIO.isEmpty()) {
-            return stack;
-        }
 
-        BlockPos bindingPos = ItemWirelessIO.getBindingPos(wirelessIO);
-        if (bindingPos == null || !maid.isWithinRestriction(bindingPos)) {
-            return stack;
-        }
-
-        BlockEntity te = maid.level().getBlockEntity(bindingPos);
-        if (te == null) {
-            return stack;
-        }
-
-        for (var type : ChestManager.getAllChestTypes()) {
-            if (type.isChest(te)) {
-                IItemHandler chestInv = te.getCapability(ForgeCapabilities.ITEM_HANDLER, null).orElse(null);
-                if (chestInv != null) {
-                    // 检查过滤规则
-                    boolean isBlacklist = ItemWirelessIO.isBlacklist(wirelessIO);
-                    IItemHandler filterList = ItemWirelessIO.getFilterList(wirelessIO);
-                    byte[] slotConfig = ItemWirelessIO.getSlotConfig(wirelessIO);
-                    boolean[] slotConfigData = slotConfig != null ? bytes2Booleans(slotConfig, SLOT_NUM) : null;
-
-                    // 检查物品是否允许移动
-                    boolean allowMove = isBlacklist;
-                    for (int j = 0; j < filterList.getSlots(); j++) {
-                        ItemStack filterItem = filterList.getStackInSlot(j);
-                        boolean isEqual = ItemStack.isSameItem(stack, filterItem);
-                        if (isEqual) {
-                            allowMove = !isBlacklist;
-                            break;
-                        }
-                    }
-
-                    if (allowMove) {
-                        return WirelessIOBauble.insertItemStacked(chestInv, stack, false, slotConfigData);
-                    }
-                }
-                break;
-            }
-        }
-
-        return stack;
-    }
-
-    private ItemStack getWirelessIOBauble(EntityMaid maid) {
-        var baubleHandler = maid.getMaidBauble();
-        for (int i = 0; i < baubleHandler.getSlots(); i++) {
-            ItemStack stack = baubleHandler.getStackInSlot(i);
-            if (stack.is(InitItems.WIRELESS_IO.get())) {
-                return stack;
-            }
-        }
-        return ItemStack.EMPTY;
-    }
 
     private boolean canAcceptMoreMilk(IFluidHandlerItem handler) {
         int simulatedFill = handler.fill(new FluidStack(net.minecraftforge.common.ForgeMod.MILK.get(), FluidHelpers.BUCKET_VOLUME), IFluidHandlerItem.FluidAction.SIMULATE);
