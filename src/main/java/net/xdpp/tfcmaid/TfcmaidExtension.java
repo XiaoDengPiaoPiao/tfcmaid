@@ -2,12 +2,14 @@ package net.xdpp.tfcmaid;
 
 import com.github.tartaricacid.touhoulittlemaid.api.ILittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.api.LittleMaidExtension;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.edible.MaidEdibleBlockManager;
 import com.github.tartaricacid.touhoulittlemaid.entity.task.TaskManager;
 import net.xdpp.tfcmaid.task.TaskTFCFeather;
 import net.xdpp.tfcmaid.task.TaskTFCFeed;
 import net.xdpp.tfcmaid.task.TaskTFCKillOld;
 import net.xdpp.tfcmaid.task.TaskTFCMilk;
 import net.xdpp.tfcmaid.task.TaskTFCShears;
+import net.xdpp.tfcmaid.util.TfcCakeEdible;
 
 @LittleMaidExtension
 public class TfcmaidExtension implements ILittleMaid {
@@ -19,5 +21,11 @@ public class TfcmaidExtension implements ILittleMaid {
         manager.add(new TaskTFCMilk());
         manager.add(new TaskTFCFeed());
         manager.add(new TaskTFCKillOld());
+    }
+
+    @Override
+    public void registerMaidEdibleBlock(MaidEdibleBlockManager manager) {
+        ILittleMaid.super.registerMaidEdibleBlock(manager);
+        manager.add(new TfcCakeEdible());
     }
 }
