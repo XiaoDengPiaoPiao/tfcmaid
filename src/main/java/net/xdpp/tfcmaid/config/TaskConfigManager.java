@@ -74,6 +74,7 @@ public class TaskConfigManager {
         defaultConfig.put("TaskFeedAnimal", true);
         defaultConfig.put("TaskFishing", true);
         defaultConfig.put("TaskExtinguishing", true);
+        defaultConfig.put("TaskShears", true);
 
         try (FileWriter writer = new FileWriter(TASK_SHIELD_FILE.toFile())) {
             GSON.toJson(defaultConfig, writer);
