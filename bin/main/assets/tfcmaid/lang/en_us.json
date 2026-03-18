@@ -1,4 +1,5 @@
 {
+  "item.tfcmaid.farm_debug_wand": "Crop Debugger",
   "task.tfcmaid.tfc_shears": "Shearing",
   "task.tfcmaid.tfc_shears.desc": "The maid will help you shear sheep and other animals.",
   "task.tfcmaid.tfc_shears.condition.has_shears": "Holding shears in the main hand.",
@@ -16,5 +17,26 @@
 
   "task.tfcmaid.tfc_kill_old": "Butcher",
   "task.tfcmaid.tfc_kill_old.desc": "The maid will kill aged animals.",
-  "task.tfcmaid.tfc_kill_old.condition.has_weapon": "Holding weapon in main hand."
+  "task.tfcmaid.tfc_kill_old.condition.has_weapon": "Holding weapon in main hand.",
+
+  "task.tfcmaid.tfc_normal_crop": "Normal Farming",
+  "task.tfcmaid.tfc_normal_crop.desc": "The maid will help you plant and harvest normal crops.",
+  "task.tfcmaid.tfc_normal_crop.condition.has_hoe": "Holding a hoe in main hand.",
+  "task.tfcmaid.tfc_normal_crop.condition.has_seed": "Has applicable seeds in backpack.",
+  
+  "task.tfcmaid.tfc_water_crop": "Aquatic Farming",
+  "task.tfcmaid.tfc_water_crop.desc": "The maid will help you plant and harvest aquatic crops.",
+  "task.tfcmaid.tfc_water_crop.condition.has_hoe": "Holding a hoe in main hand.",
+  "task.tfcmaid.tfc_water_crop.condition.has_seed": "Has applicable seeds in backpack.",
+  
+  "task.tfcmaid.tfc_pickable_crop": "Pickable Farming",
+  "task.tfcmaid.tfc_pickable_crop.desc": "The maid will help you plant and harvest pickable crops.",
+  "task.tfcmaid.tfc_pickable_crop.condition.has_hoe": "Holding a hoe in main hand.",
+  "task.tfcmaid.tfc_pickable_crop.condition.has_seed": "Has applicable seeds in backpack.",
+  
+  "task.tfcmaid.tfc_spreading_crop": "Spreading Farming",
+  "task.tfcmaid.tfc_spreading_crop.desc": "The maid will help you plant and harvest spreading crops.",
+  "task.tfcmaid.tfc_spreading_crop.condition.has_hoe": "Holding a hoe in main hand.",
+  "task.tfcmaid.tfc_spreading_crop.condition.has_axe": "Holding an axe in off hand.",
+  "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "Has applicable seeds in backpack."
 }

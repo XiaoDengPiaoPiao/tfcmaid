@@ -1,4 +1,5 @@
 {
+  "item.tfcmaid.farm_debug_wand": "作物调试器",
   "task.tfcmaid.tfc_shears": "剪毛",
   "task.tfcmaid.tfc_shears.desc": "女仆会帮你剪羊毛和其他动物的毛",
   "task.tfcmaid.tfc_shears.condition.has_shears": "主手持有剪刀",
@@ -16,5 +17,26 @@
 
   "task.tfcmaid.tfc_kill_old": "屠夫",
   "task.tfcmaid.tfc_kill_old.desc": "女仆会杀死已经衰老的动物",
-  "task.tfcmaid.tfc_kill_old.condition.has_weapon": "主手持有攻击性武器"
+  "task.tfcmaid.tfc_kill_old.condition.has_weapon": "主手持有攻击性武器",
+
+  "task.tfcmaid.tfc_normal_crop": "普通种植",
+  "task.tfcmaid.tfc_normal_crop.desc": "女仆会帮你种植和收获普通作物",
+  "task.tfcmaid.tfc_normal_crop.condition.has_hoe": "主手持有锄头",
+  "task.tfcmaid.tfc_normal_crop.condition.has_seed": "背包有对应种子",
+  
+  "task.tfcmaid.tfc_water_crop": "水生种植",
+  "task.tfcmaid.tfc_water_crop.desc": "女仆会帮你种植和收获水生作物",
+  "task.tfcmaid.tfc_water_crop.condition.has_hoe": "主手持有锄头",
+  "task.tfcmaid.tfc_water_crop.condition.has_seed": "背包有对应种子",
+  
+  "task.tfcmaid.tfc_pickable_crop": "可采摘种植",
+  "task.tfcmaid.tfc_pickable_crop.desc": "女仆会帮你种植和收获可直接采摘的作物",
+  "task.tfcmaid.tfc_pickable_crop.condition.has_hoe": "主手持有锄头",
+  "task.tfcmaid.tfc_pickable_crop.condition.has_seed": "背包有对应种子",
+  
+  "task.tfcmaid.tfc_spreading_crop": "瓜类种植",
+  "task.tfcmaid.tfc_spreading_crop.desc": "女仆会帮你种植和收获瓜类作物",
+  "task.tfcmaid.tfc_spreading_crop.condition.has_hoe": "主手持有锄头",
+  "task.tfcmaid.tfc_spreading_crop.condition.has_axe": "副手持有斧子",
+  "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "背包有对应种子"
 }

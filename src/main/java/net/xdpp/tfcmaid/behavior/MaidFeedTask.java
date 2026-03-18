@@ -48,7 +48,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
     protected void start(ServerLevel worldIn, EntityMaid maid, long gameTimeIn) {
         targetAnimal = null;
 
-        // 新的一天了，重置喂养计数
+        // 新的一天，重置喂养计数
         long currentDay = worldIn.getGameTime() / 24000;
         if (currentDay != lastFeedDay) {
             lastFeedDay = currentDay;
@@ -71,7 +71,7 @@ public class MaidFeedTask extends MaidCheckRateTask {
             return;
         }
 
-        // 找食物，找不到就歇菜
+        // 找食物
         ItemStack food = findAndEquipFood(maid);
         if (food.isEmpty()) {
             return;

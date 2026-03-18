@@ -9,6 +9,10 @@ import net.xdpp.tfcmaid.task.TaskTFCFeed;
 import net.xdpp.tfcmaid.task.TaskTFCKillOld;
 import net.xdpp.tfcmaid.task.TaskTFCMilk;
 import net.xdpp.tfcmaid.task.TaskTFCShears;
+import net.xdpp.tfcmaid.task.TaskTFCNormalCrop;
+import net.xdpp.tfcmaid.task.TaskTFCWaterCrop;
+import net.xdpp.tfcmaid.task.TaskTFCPickableCrop;
+import net.xdpp.tfcmaid.task.TaskTFCSpreadingCrop;
 import net.xdpp.tfcmaid.util.TfcCakeEdible;
 
 @LittleMaidExtension
@@ -21,6 +25,10 @@ public class TfcmaidExtension implements ILittleMaid {
         manager.add(new TaskTFCMilk());
         manager.add(new TaskTFCFeed());
         manager.add(new TaskTFCKillOld());
+        manager.add(new TaskTFCNormalCrop());
+        manager.add(new TaskTFCWaterCrop());
+        manager.add(new TaskTFCPickableCrop());
+        manager.add(new TaskTFCSpreadingCrop());
     }
 
     @Override
