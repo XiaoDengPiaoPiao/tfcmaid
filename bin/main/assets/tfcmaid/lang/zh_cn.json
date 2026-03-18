@@ -38,5 +38,8 @@
   "task.tfcmaid.tfc_spreading_crop.desc": "女仆会帮你种植和收获瓜类作物",
   "task.tfcmaid.tfc_spreading_crop.condition.has_hoe": "主手持有锄头",
   "task.tfcmaid.tfc_spreading_crop.condition.has_axe": "副手持有斧子",
-  "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "背包有对应种子"
+  "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "背包有对应种子",
+
+  "task.tfcmaid.tfc_berry_bush": "浆果采集",
+  "task.tfcmaid.tfc_berry_bush.desc": "女仆会帮你采集灌木的果实"
 }

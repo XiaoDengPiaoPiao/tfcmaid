@@ -38,5 +38,8 @@
   "task.tfcmaid.tfc_spreading_crop.desc": "The maid will help you plant and harvest spreading crops.",
   "task.tfcmaid.tfc_spreading_crop.condition.has_hoe": "Holding a hoe in main hand.",
   "task.tfcmaid.tfc_spreading_crop.condition.has_axe": "Holding an axe in off hand.",
-  "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "Has applicable seeds in backpack."
+  "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "Has applicable seeds in backpack.",
+
+  "task.tfcmaid.tfc_berry_bush": "Berry Picking",
+  "task.tfcmaid.tfc_berry_bush.desc": "The maid will help you pick berries from bushes."
 }
