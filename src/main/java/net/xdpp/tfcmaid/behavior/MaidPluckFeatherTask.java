@@ -33,17 +33,19 @@ public class MaidPluckFeatherTask extends MaidCheckRateTask {
     protected void start(ServerLevel worldIn, EntityMaid maid, long gameTimeIn) {
         pluckableEntity = null;
 
-        this.getEntities(maid)
+        java.util.List<LivingEntity> candidates = this.getEntities(maid)
                 .find(e -> maid.isWithinRestriction(e.blockPosition()))
                 .filter(LivingEntity::isAlive)
                 .filter(e -> e instanceof Pluckable)
                 .filter(e -> e instanceof TFCAnimalProperties && ((TFCAnimalProperties) e).getAgeType() == TFCAnimalProperties.Age.ADULT)
                 .filter(maid::canPathReach)
-                .findFirst()
-                .ifPresent(e -> {
-                    pluckableEntity = e;
-                    BehaviorUtils.setWalkAndLookTargetMemories(maid, e, this.speedModifier, 0);
-                });
+                .toList();
+        
+        if (!candidates.isEmpty()) {
+            int index = maid.getRandom().nextInt(candidates.size());
+            pluckableEntity = candidates.get(index);
+            BehaviorUtils.setWalkAndLookTargetMemories(maid, pluckableEntity, this.speedModifier, 0);
+        }
 
         if (pluckableEntity != null && pluckableEntity.closerThan(maid, 2)) {
             Pluckable pluckable = (Pluckable) pluckableEntity;

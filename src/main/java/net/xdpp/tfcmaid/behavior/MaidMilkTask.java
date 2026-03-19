@@ -61,16 +61,18 @@ public class MaidMilkTask extends MaidCheckRateTask {
         }
 
         // 找附近的奶牛，条件是：在范围内、活着、是DairyAnimal、能走到
-        this.getEntities(maid)
+        java.util.List<LivingEntity> candidates = this.getEntities(maid)
                 .find(e -> maid.isWithinRestriction(e.blockPosition()))
                 .filter(LivingEntity::isAlive)
                 .filter(e -> e instanceof DairyAnimal)
                 .filter(maid::canPathReach)
-                .findFirst()
-                .ifPresent(e -> {
-                    dairyAnimal = e;
-                    BehaviorUtils.setWalkAndLookTargetMemories(maid, e, this.speedModifier, 0);
-                });
+                .toList();
+        
+        if (!candidates.isEmpty()) {
+            int index = maid.getRandom().nextInt(candidates.size());
+            dairyAnimal = candidates.get(index);
+            BehaviorUtils.setWalkAndLookTargetMemories(maid, dairyAnimal, this.speedModifier, 0);
+        }
 
         // 走到了就开始挤奶
         if (dairyAnimal != null && dairyAnimal.closerThan(maid, 2)) {
