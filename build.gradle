@@ -96,6 +96,8 @@ dependencies {
     implementation fg.deobf("curse.maven:terrafirmacraft-302973:7730077")
     // maid
     implementation fg.deobf("curse.maven:touhou-little-maid-355044:7510714")
+    //jei
+    implementation fg.deobf("curse.maven:jei-238222:7391695")
 }
 
 tasks.named('processResources', ProcessResources).configure {
