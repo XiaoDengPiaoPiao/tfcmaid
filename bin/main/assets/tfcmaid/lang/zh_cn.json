@@ -1,18 +1,18 @@
 {
   "item.tfcmaid.farm_debug_wand": "作物调试器",
   "task.tfcmaid.tfc_shears": "剪毛",
-  "task.tfcmaid.tfc_shears.desc": "女仆会帮你剪羊毛和其他动物的毛",
+  "task.tfcmaid.tfc_shears.desc": "女仆会剪羊毛和其他动物的毛",
   "task.tfcmaid.tfc_shears.condition.has_shears": "主手持有剪刀",
 
   "task.tfcmaid.tfc_feather": "拔毛",
-  "task.tfcmaid.tfc_feather.desc": "女仆会帮你拔飞禽的毛",
+  "task.tfcmaid.tfc_feather.desc": "女仆会拔飞禽的毛",
 
   "task.tfcmaid.tfc_milk": "挤奶",
-  "task.tfcmaid.tfc_milk.desc": "女仆会帮你挤奶",
+  "task.tfcmaid.tfc_milk.desc": "女仆会挤奶",
   "task.tfcmaid.tfc_milk.condition.has_container": "主手或背包有可用容器",
 
   "task.tfcmaid.tfc_feed": "喂养",
-  "task.tfcmaid.tfc_feed.desc": "女仆会帮你喂养动物",
+  "task.tfcmaid.tfc_feed.desc": "女仆会喂养动物",
   "task.tfcmaid.tfc_feed.condition.has_food": "主手或背包有可作为饲料的食物",
 
   "task.tfcmaid.tfc_kill_old": "屠夫",
@@ -20,26 +20,36 @@
   "task.tfcmaid.tfc_kill_old.condition.has_weapon": "主手持有攻击性武器",
 
   "task.tfcmaid.tfc_normal_crop": "普通种植",
-  "task.tfcmaid.tfc_normal_crop.desc": "女仆会帮你种植和收获普通作物",
+  "task.tfcmaid.tfc_normal_crop.desc": "女仆会种植和收获普通作物",
   "task.tfcmaid.tfc_normal_crop.condition.has_hoe": "主手持有锄头",
   "task.tfcmaid.tfc_normal_crop.condition.has_seed": "背包有对应种子",
   
   "task.tfcmaid.tfc_water_crop": "水生种植",
-  "task.tfcmaid.tfc_water_crop.desc": "女仆会帮你种植和收获水生作物",
+  "task.tfcmaid.tfc_water_crop.desc": "女仆会种植和收获水生作物",
   "task.tfcmaid.tfc_water_crop.condition.has_hoe": "主手持有锄头",
   "task.tfcmaid.tfc_water_crop.condition.has_seed": "背包有对应种子",
   
   "task.tfcmaid.tfc_pickable_crop": "可采摘种植",
-  "task.tfcmaid.tfc_pickable_crop.desc": "女仆会帮你种植和收获可直接采摘的作物",
+  "task.tfcmaid.tfc_pickable_crop.desc": "女仆会种植和收获可直接采摘的作物",
   "task.tfcmaid.tfc_pickable_crop.condition.has_hoe": "主手持有锄头",
   "task.tfcmaid.tfc_pickable_crop.condition.has_seed": "背包有对应种子",
   
   "task.tfcmaid.tfc_spreading_crop": "瓜类种植",
-  "task.tfcmaid.tfc_spreading_crop.desc": "女仆会帮你种植和收获瓜类作物",
+  "task.tfcmaid.tfc_spreading_crop.desc": "女仆会种植和收获瓜类作物",
   "task.tfcmaid.tfc_spreading_crop.condition.has_hoe": "主手持有锄头",
   "task.tfcmaid.tfc_spreading_crop.condition.has_axe": "副手持有斧子",
   "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "背包有对应种子",
 
   "task.tfcmaid.tfc_berry_bush": "浆果采集",
-  "task.tfcmaid.tfc_berry_bush.desc": "女仆会帮你采集灌木的果实"
+  "task.tfcmaid.tfc_berry_bush.desc": "女仆会采集灌木的果实",
+
+  "task.tfcmaid.tfc_javelin_attack": "标枪攻击",
+  "task.tfcmaid.tfc_javelin_attack.desc": "女仆会帮你投掷标枪攻击附近的敌人",
+  "task.tfcmaid.tfc_javelin_attack.condition.has_javelin": "主手持有标枪",
+
+  "task.tfcmaid.tfc_panning": "淘金筛矿",
+  "task.tfcmaid.tfc_panning.desc": "女仆会使用淘金盘筛矿，工作范围4格内需要有水源才能进行",
+  "task.tfcmaid.tfc_panning.condition.has_empty_pan": "主手持有空淘金盘",
+  "task.tfcmaid.tfc_panning.condition.has_pannable_in_inventory": "背包中有可筛物品",
+  "task.tfcmaid.tfc_panning.progress": "筛矿中..."
 }

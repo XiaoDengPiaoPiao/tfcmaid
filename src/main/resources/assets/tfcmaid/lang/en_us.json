@@ -41,5 +41,15 @@
   "task.tfcmaid.tfc_spreading_crop.condition.has_seed": "Has applicable seeds in backpack.",
 
   "task.tfcmaid.tfc_berry_bush": "Berry Picking",
-  "task.tfcmaid.tfc_berry_bush.desc": "The maid will help you pick berries from bushes."
+  "task.tfcmaid.tfc_berry_bush.desc": "The maid will help you pick berries from bushes.",
+
+  "task.tfcmaid.tfc_javelin_attack": "Javelin Attack",
+  "task.tfcmaid.tfc_javelin_attack.desc": "The maid will help you throw javelins to attack nearby enemies.",
+  "task.tfcmaid.tfc_javelin_attack.condition.has_javelin": "Holding a javelin in the main hand.",
+
+  "task.tfcmaid.tfc_panning": "Panning",
+  "task.tfcmaid.tfc_panning.desc": "The maid will use a pan to pan for ores, need water source in working area.",
+  "task.tfcmaid.tfc_panning.condition.has_empty_pan": "Holding an empty pan in the main hand.",
+  "task.tfcmaid.tfc_panning.condition.has_pannable_in_inventory": "Has a pan with pannable items in inventory.",
+  "task.tfcmaid.tfc_panning.progress": "Panning..."
 }

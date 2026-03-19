@@ -14,8 +14,15 @@ import net.xdpp.tfcmaid.task.TaskTFCWaterCrop;
 import net.xdpp.tfcmaid.task.TaskTFCPickableCrop;
 import net.xdpp.tfcmaid.task.TaskTFCSpreadingCrop;
 import net.xdpp.tfcmaid.task.TaskTFCBerryBush;
+import net.xdpp.tfcmaid.task.TaskTFCJavelinAttack;
+import net.xdpp.tfcmaid.task.TaskTFCPanning;
 import net.xdpp.tfcmaid.util.TfcCakeEdible;
 
+/**
+ * TFC 女仆扩展类
+ * <p>
+ * 用于注册 TFC 相关的女仆任务和可食用方块
+ */
 @LittleMaidExtension
 public class TfcmaidExtension implements ILittleMaid {
     @Override
@@ -31,6 +38,8 @@ public class TfcmaidExtension implements ILittleMaid {
         manager.add(new TaskTFCPickableCrop());
         manager.add(new TaskTFCSpreadingCrop());
         manager.add(new TaskTFCBerryBush());
+        manager.add(new TaskTFCJavelinAttack());
+        manager.add(new TaskTFCPanning());
     }
 
     @Override

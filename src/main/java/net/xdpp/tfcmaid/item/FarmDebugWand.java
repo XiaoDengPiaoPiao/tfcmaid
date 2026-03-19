@@ -16,6 +16,12 @@ import net.dries007.tfc.common.blockentities.CropBlockEntity;
 import net.dries007.tfc.common.blocks.crop.ICropBlock;
 import net.dries007.tfc.util.calendar.Calendars;
 
+/**
+ * 作物调试魔杖
+ * <p>
+ * 右键点击 TFC 作物可使其立即成熟且不会枯萎
+ * 主要用于开发和测试
+ */
 public class FarmDebugWand extends Item {
 
     public FarmDebugWand(Properties properties) {

@@ -135,7 +135,7 @@ public class MaidKillOldTask extends MaidCheckRateTask {
         }
     }
 
-    // 从记忆里获取附近的实体，标准写法
+    // 从记忆里获取附近的实体
     private NearestVisibleLivingEntities getEntities(EntityMaid maid) {
         return maid.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES).orElse(NearestVisibleLivingEntities.empty());
     }

@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * TFC 女仆任务基类
+ * <p>
+ * 封装了 IMaidTask 接口的通用实现，包括任务 UID、图标、声音、优先级等
+ */
 public abstract class BaseTfcMaidTask implements IMaidTask {
     protected final ResourceLocation uid;
     protected final ItemStack icon;

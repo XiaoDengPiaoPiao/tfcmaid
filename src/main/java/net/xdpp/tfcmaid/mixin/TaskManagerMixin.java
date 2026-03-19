@@ -8,9 +8,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-// 移除群峦不兼容的女仆任务
+/**
+ * 女仆任务管理器 Mixin
+ * <p>
+ * 用于根据配置屏蔽掉与 TFC 模组不兼容的女仆任务
+ */
 @Mixin(value = TaskManager.class, remap = false)
 public abstract class TaskManagerMixin {
     private static final Map<Class<?>, Boolean> BLOCKED_TASK_CACHE = new HashMap<>();
