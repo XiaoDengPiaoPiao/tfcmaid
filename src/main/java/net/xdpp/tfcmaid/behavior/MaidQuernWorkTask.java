@@ -1,21 +1,14 @@
 package net.xdpp.tfcmaid.behavior;
 
 import com.github.tartaricacid.touhoulittlemaid.entity.passive.EntityMaid;
-import com.github.tartaricacid.touhoulittlemaid.init.InitEntities;
 import com.github.tartaricacid.touhoulittlemaid.util.ItemsUtil;
-import com.google.common.collect.ImmutableMap;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blockentities.QuernBlockEntity;
 import net.dries007.tfc.common.recipes.QuernRecipe;
 import net.dries007.tfc.common.recipes.inventory.ItemStackInventory;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.xdpp.tfcmaid.mixin.QuernBlockEntityAccessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +16,7 @@ import java.lang.reflect.Field;
 
 /**
  * 推磨工作任务类
- * 继承自 MaidLongRunningTask，实现推磨操作的完整流程
+ * 继承自 AbstractBlockEntityWorkTask，实现推磨操作的完整流程
  * 工作流程：
  * 1. 检查推磨是否有 handstone（手石），如果没有，从背包找一个放上去
  * 2. 检查输出槽，如果有物品，取出来放到女仆背包
@@ -35,7 +28,7 @@ import java.lang.reflect.Field;
  * - 按优先级顺序找可磨物品（主手 > 副手 > 背包）
  * - 距离检查：只有在推磨4格范围内才能工作
  */
-public class MaidQuernWorkTask extends MaidLongRunningTask {
+public class MaidQuernWorkTask extends AbstractBlockEntityWorkTask<QuernBlockEntity> {
     private static final Logger LOGGER = LoggerFactory.getLogger("MaidQuernWorkTask");
 
     /**
@@ -60,49 +53,17 @@ public class MaidQuernWorkTask extends MaidLongRunningTask {
         }
     }
 
-    /**
-     * 目标推磨位置
-     */
-    private BlockPos targetPos = null;
-
     public MaidQuernWorkTask(double closeEnoughDist) {
-        super(ImmutableMap.of(
-                InitEntities.TARGET_POS.get(), MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED
-        ));
+        super();
     }
 
     @Override
-    protected boolean checkExtraStartConditions(ServerLevel world, EntityMaid maid) {
-        return maid.getBrain().getMemory(InitEntities.TARGET_POS.get()).map(posWrapper -> {
-            BlockPos pos = posWrapper.currentBlockPosition();
-            this.targetPos = pos;
-            BlockEntity be = world.getBlockEntity(pos);
-            return be instanceof QuernBlockEntity;
-        }).orElse(false);
+    protected Class<QuernBlockEntity> getBlockEntityClass() {
+        return QuernBlockEntity.class;
     }
 
     @Override
-    protected void start(ServerLevel world, EntityMaid maid, long gameTime) {
-    }
-
-    @Override
-    protected void tick(ServerLevel world, EntityMaid maid, long gameTime) {
-        if (this.targetPos == null) {
-            return;
-        }
-
-        double distSqr = maid.distanceToSqr(this.targetPos.getX() + 0.5D, this.targetPos.getY() + 0.5D, this.targetPos.getZ() + 0.5D);
-        if (distSqr > 16.0D) { // 4格范围
-            return;
-        }
-
-        maid.getLookControl().setLookAt(this.targetPos.getX() + 0.5D, this.targetPos.getY() + 0.5D, this.targetPos.getZ() + 0.5D);
-
-        BlockEntity be = world.getBlockEntity(this.targetPos);
-        if (!(be instanceof QuernBlockEntity quern)) {
-            return;
-        }
+    protected void tickWork(ServerLevel world, EntityMaid maid, long gameTime, QuernBlockEntity quern) {
         var inventory = getQuernInventory(quern);
         if (inventory == null) {
             LOGGER.error("MaidQuernWorkTask tick: failed to get quern inventory");
@@ -135,7 +96,6 @@ public class MaidQuernWorkTask extends MaidLongRunningTask {
         /**
          * 3. 检查推磨是否正在工作，如果正在工作就什么都不做
          */
-        QuernBlockEntityAccessor accessor = (QuernBlockEntityAccessor) quern;
         if (quern.isGrinding()) {
             return;
         }
@@ -254,28 +214,5 @@ public class MaidQuernWorkTask extends MaidLongRunningTask {
         }
 
         return ItemStack.EMPTY;
-    }
-
-    @Override
-    protected boolean canStillUse(ServerLevel world, EntityMaid maid, long gameTime) {
-        if (this.targetPos == null) {
-            return false;
-        }
-        BlockEntity be = world.getBlockEntity(this.targetPos);
-        if (!(be instanceof QuernBlockEntity)) {
-            return false;
-        }
-        double distSqr = maid.distanceToSqr(this.targetPos.getX() + 0.5D, this.targetPos.getY() + 0.5D, this.targetPos.getZ() + 0.5D);
-        if (distSqr > 16.0D) { // 4格范围
-            return false;
-        }
-        return maid.getBrain().getMemory(InitEntities.TARGET_POS.get()).isPresent();
-    }
-
-    @Override
-    protected void stop(ServerLevel world, EntityMaid maid, long gameTime) {
-        this.targetPos = null;
-        maid.getBrain().eraseMemory(InitEntities.TARGET_POS.get());
-        maid.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
     }
 }
