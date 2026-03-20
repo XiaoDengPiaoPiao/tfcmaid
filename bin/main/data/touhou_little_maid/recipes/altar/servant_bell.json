@@ -18,7 +18,7 @@
       "tag": "forge:ingots/gold"
     },
     {
-      "tag": "forge:nuggets/gold"
+      "item": "tfc:ore/small_native_gold"
     },
     {
       "tag": "forge:nuggets/gold"

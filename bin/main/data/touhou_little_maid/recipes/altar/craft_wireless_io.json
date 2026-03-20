@@ -16,9 +16,6 @@
     },
     {
       "tag": "forge:chests/wooden"
-    },
-    {
-      "item": "minecraft:hopper"
     }
   ]
 }

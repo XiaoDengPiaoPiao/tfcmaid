@@ -18,10 +18,10 @@
       "item": "tfc:thatch"
     },
     {
-      "item": "minecraft:granite"
+      "tag": "forge:cobblestone/normal"
     },
     {
-      "item": "minecraft:granite"
+      "tag": "forge:cobblestone/normal"
     },
     {
       "tag": "forge:dusts/redstone"

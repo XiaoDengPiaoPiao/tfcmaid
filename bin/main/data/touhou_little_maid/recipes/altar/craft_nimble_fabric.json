@@ -24,13 +24,13 @@
       "item": "tfc:gem/amethyst"
     },
     {
-      "tag": "minecraft:wool"
+      "item": "tfc:wool_cloth"
     },
     {
-      "tag": "minecraft:wool"
+      "item": "tfc:wool_cloth"
     },
     {
-      "tag": "minecraft:wool"
+      "item": "tfc:wool_cloth"
     }
   ]
 }

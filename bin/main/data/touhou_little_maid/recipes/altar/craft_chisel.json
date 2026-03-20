@@ -21,10 +21,10 @@
       "tag": "forge:rods/wooden"
     },
     {
-      "tag": "tfc:metal/ingot/wrought_iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
-      "tag": "tfc:metal/ingot/wrought_iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
       "tag": "forge:dyes/yellow"

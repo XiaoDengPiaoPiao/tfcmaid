@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "tfc:wool_cloth"
+    }
+  ],
+  "result": {
+    "item": "touhou_little_maid:entity_id_copy"
+  }
+}
