@@ -51,5 +51,21 @@
   "task.tfcmaid.tfc_panning.desc": "女仆会使用淘金盘筛矿，工作范围4格内需要有水源才能进行",
   "task.tfcmaid.tfc_panning.condition.has_empty_pan": "主手持有空淘金盘",
   "task.tfcmaid.tfc_panning.condition.has_pannable_in_inventory": "背包中有可筛物品",
-  "task.tfcmaid.tfc_panning.progress": "筛矿中..."
+
+  "task.tfcmaid.tfc_loom": "织姬",
+  "task.tfcmaid.tfc_loom.desc": "女仆会使用织机织布",
+  "task.tfcmaid.tfc_loom.condition.has_loom_result": "主手放置织机成果物品",
+  "task.tfcmaid.tfc_loom.condition.has_stick_in_offhand": "副手放置木棍",
+
+  "task.tfcmaid.tfc_debris": "拾荒",
+  "task.tfcmaid.tfc_debris.desc": "女仆会拾取附近的小树枝和小石子",
+
+  "task.tfcmaid.tfc_weed": "除草",
+  "task.tfcmaid.tfc_weed.desc": "女仆会清除附近的杂草和野生作物",
+
+  "task.tfcmaid.tfc_quern": "推磨",
+  "task.tfcmaid.tfc_quern.desc": "女仆会使用推磨将可磨物品磨成粉末",
+
+  "task.tfcmaid.tfc_bellows": "拉风箱",
+  "task.tfcmaid.tfc_bellows.desc": "女仆会使用风箱向炉子送风"
 }

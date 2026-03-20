@@ -16,6 +16,11 @@ import net.xdpp.tfcmaid.task.TaskTFCSpreadingCrop;
 import net.xdpp.tfcmaid.task.TaskTFCBerryBush;
 import net.xdpp.tfcmaid.task.TaskTFCJavelinAttack;
 import net.xdpp.tfcmaid.task.TaskTFCPanning;
+import net.xdpp.tfcmaid.task.TaskTFCWeed;
+import net.xdpp.tfcmaid.task.TaskTFCDebris;
+import net.xdpp.tfcmaid.task.TaskTFCLoom;
+import net.xdpp.tfcmaid.task.TaskTFCQuern;
+import net.xdpp.tfcmaid.task.TaskTFCBellows;
 import net.xdpp.tfcmaid.util.TfcCakeEdible;
 
 /**
@@ -40,6 +45,11 @@ public class TfcmaidExtension implements ILittleMaid {
         manager.add(new TaskTFCBerryBush());
         manager.add(new TaskTFCJavelinAttack());
         manager.add(new TaskTFCPanning());
+        manager.add(new TaskTFCWeed());
+        manager.add(new TaskTFCDebris());
+        manager.add(new TaskTFCLoom());
+        manager.add(new TaskTFCQuern());
+        manager.add(new TaskTFCBellows());
     }
 
     @Override

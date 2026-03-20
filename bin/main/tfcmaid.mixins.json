@@ -6,7 +6,9 @@
   "refmap": "tfcmaid.refmap.json",
   "mixins": [
     "TaskManagerMixin",
-    "TaskFeedOwnerMixin"
+    "TaskFeedOwnerMixin",
+    "LoomBlockEntityAccessor",
+    "QuernBlockEntityAccessor"
   ],
   "client": [
   ],

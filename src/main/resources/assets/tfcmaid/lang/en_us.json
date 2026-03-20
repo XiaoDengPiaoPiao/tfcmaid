@@ -51,5 +51,22 @@
   "task.tfcmaid.tfc_panning.desc": "The maid will use a pan to pan for ores, need water source in working area.",
   "task.tfcmaid.tfc_panning.condition.has_empty_pan": "Holding an empty pan in the main hand.",
   "task.tfcmaid.tfc_panning.condition.has_pannable_in_inventory": "Has a pan with pannable items in inventory.",
-  "task.tfcmaid.tfc_panning.progress": "Panning..."
+  "task.tfcmaid.tfc_panning.progress": "Panning...",
+
+  "task.tfcmaid.tfc_loom": "Weaving",
+  "task.tfcmaid.tfc_loom.desc": "The maid will use a loom to weave cloth.",
+  "task.tfcmaid.tfc_loom.condition.has_loom_result": "Holding loom result item in main hand.",
+  "task.tfcmaid.tfc_loom.condition.has_stick_in_offhand": "Holding a stick in off hand.",
+
+  "task.tfcmaid.tfc_debris": "Scavenging",
+  "task.tfcmaid.tfc_debris.desc": "The maid will collect nearby twigs and loose rocks.",
+
+  "task.tfcmaid.tfc_weed": "Weeding",
+  "task.tfcmaid.tfc_weed.desc": "The maid will clear nearby weeds and wild crops.",
+
+  "task.tfcmaid.tfc_quern": "Grinding",
+  "task.tfcmaid.tfc_quern.desc": "The maid will use a quern to grind grindable items into powder.",
+
+  "task.tfcmaid.tfc_bellows": "Blowing Bellows",
+  "task.tfcmaid.tfc_bellows.desc": "The maid will use a bellows to blow air into furnaces."
 }

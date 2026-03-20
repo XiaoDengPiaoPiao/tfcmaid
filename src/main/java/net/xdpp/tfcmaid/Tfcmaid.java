@@ -17,6 +17,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.xdpp.tfcmaid.config.FeedConfigManager;
 import net.xdpp.tfcmaid.config.TaskConfigManager;
+import net.xdpp.tfcmaid.config.WeedConfigManager;
 import net.xdpp.tfcmaid.item.FarmDebugWand;
 import org.slf4j.Logger;
 
@@ -44,6 +45,8 @@ public class Tfcmaid {
         TaskConfigManager.initialize();
         // 初始化喂养配置管理器
         FeedConfigManager.initialize();
+        // 初始化杂草配置管理器
+        WeedConfigManager.initialize();
         // 注册延迟注册器
         var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(modEventBus);
