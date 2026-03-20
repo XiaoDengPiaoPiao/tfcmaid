@@ -18,13 +18,13 @@
       "tag": "forge:ingots/gold"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
       "item": "minecraft:note_block"

@@ -12,10 +12,10 @@
   "power": 0.2,
   "ingredients": [
     {
-      "item": "minecraft:hay_block"
+      "item": "tfc:thatch"
     },
     {
-      "item": "minecraft:hay_block"
+      "item": "tfc:thatch"
     },
     {
       "item": "minecraft:granite"

@@ -27,7 +27,7 @@
       "item": "minecraft:clay_ball"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
       "tag": "forge:dyes/red"

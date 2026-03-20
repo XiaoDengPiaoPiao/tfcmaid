@@ -27,10 +27,10 @@
       "tag": "forge:rods/wooden"
     },
     {
-      "item": "minecraft:paper"
+      "item": "tfc:wool_cloth"
     },
     {
-      "item": "minecraft:paper"
+      "item": "tfc:wool_cloth"
     }
   ]
 }

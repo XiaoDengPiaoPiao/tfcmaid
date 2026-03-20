@@ -12,13 +12,13 @@
   "power": 0.1,
   "ingredients": [
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
       "tag": "forge:dyes/cyan"

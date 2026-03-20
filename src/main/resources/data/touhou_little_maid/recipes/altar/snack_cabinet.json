@@ -12,10 +12,10 @@
   "power": 0.1,
   "ingredients": [
     {
-      "item": "minecraft:barrel"
+      "tag": "minecraft:planks"
     },
     {
-      "tag": "minecraft:planks"
+      "tag": "forge:chests/wooden"
     },
     {
       "tag": "minecraft:planks"

@@ -15,22 +15,22 @@
   "power": 0.2,
   "ingredients": [
     {
-      "tag": "forge:crops/nether_wart"
+      "item": "tfc:gem/ruby"
     },
     {
       "tag": "forge:dyes/orange"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     }
   ]
 }

@@ -12,16 +12,16 @@
   "power": 0.2,
   "ingredients": [
     {
-      "item": "minecraft:hay_block"
+      "item": "tfc:thatch"
     },
     {
-      "item": "minecraft:hay_block"
+      "item": "tfc:thatch"
     },
     {
-      "item": "minecraft:granite"
+      "tag": "forge:cobblestone/normal"
     },
     {
-      "item": "minecraft:granite"
+      "tag": "forge:cobblestone/normal"
     },
     {
       "tag": "forge:dusts/redstone"

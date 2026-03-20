@@ -12,16 +12,16 @@
   "power": 0.1,
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "item": "tfc:wool_cloth"
     },
     {
-      "item": "minecraft:paper"
+      "item": "tfc:wool_cloth"
     },
     {
-      "item": "minecraft:paper"
+      "item": "tfc:wool_cloth"
     },
     {
-      "item": "minecraft:paper"
+      "item": "tfc:wool_cloth"
     },
     {
       "tag": "forge:dyes/red"

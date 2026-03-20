@@ -15,22 +15,22 @@
   "power": 0.2,
   "ingredients": [
     {
-      "tag": "forge:ender_pearls"
+      "item": "tfc:gem/amethyst"
     },
     {
-      "tag": "forge:ender_pearls"
+      "item": "tfc:gem/amethyst"
     },
     {
-      "tag": "forge:ender_pearls"
+      "item": "tfc:gem/amethyst"
     },
     {
-      "tag": "minecraft:wool"
+      "item": "tfc:wool_cloth"
     },
     {
-      "tag": "minecraft:wool"
+      "item": "tfc:wool_cloth"
     },
     {
-      "tag": "minecraft:wool"
+      "item": "tfc:wool_cloth"
     }
   ]
 }

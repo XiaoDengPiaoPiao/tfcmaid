@@ -21,13 +21,13 @@
       "tag": "minecraft:planks"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     },
     {
       "tag": "forge:gems/diamond"
     },
     {
-      "tag": "forge:obsidian"
+      "item": "tfc:gem/sapphire"
     }
   ]
 }

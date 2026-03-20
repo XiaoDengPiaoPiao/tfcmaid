@@ -11,11 +11,6 @@
   },
   "power": 0.2,
   "ingredients": [
-    {
-      "item": "touhou_little_maid:maid_backpack_middle"
-    },
-    {
-      "item": "minecraft:furnace"
-    }
+
   ]
 }

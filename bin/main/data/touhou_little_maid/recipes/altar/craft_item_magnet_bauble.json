@@ -21,13 +21,13 @@
       "tag": "forge:dusts/redstone"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     },
     {
-      "tag": "forge:ingots/iron"
+      "item": "tfc:metal/ingot/wrought_iron"
     }
   ]
 }
