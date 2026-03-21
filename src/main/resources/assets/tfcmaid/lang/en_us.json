@@ -68,5 +68,9 @@
   "task.tfcmaid.tfc_quern.desc": "The maid will use a quern to grind grindable items into powder.",
 
   "task.tfcmaid.tfc_bellows": "Blowing Bellows",
-  "task.tfcmaid.tfc_bellows.desc": "The maid will use a bellows to blow air into furnaces."
+  "task.tfcmaid.tfc_bellows.desc": "The maid will use a bellows to blow air into furnaces.",
+
+  "task.tfcmaid.tfc_hay": "Hay Collecting",
+  "task.tfcmaid.tfc_hay.desc": "The maid will collect nearby grass to get hay.",
+  "task.tfcmaid.tfc_hay.condition.has_hoe_or_knife": "Holding a hoe, knife, or scythe in main hand."
 }

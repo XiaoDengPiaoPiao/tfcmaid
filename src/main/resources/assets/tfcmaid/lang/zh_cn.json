@@ -67,5 +67,9 @@
   "task.tfcmaid.tfc_quern.desc": "女仆会使用推磨将可磨物品磨成粉末",
 
   "task.tfcmaid.tfc_bellows": "拉风箱",
-  "task.tfcmaid.tfc_bellows.desc": "女仆会使用风箱向炉子送风"
+  "task.tfcmaid.tfc_bellows.desc": "女仆会使用风箱向炉子送风",
+
+  "task.tfcmaid.tfc_hay": "收集干草",
+  "task.tfcmaid.tfc_hay.desc": "女仆会收集附近的草，获得干草",
+  "task.tfcmaid.tfc_hay.condition.has_hoe_or_knife": "主手持有锄头、刀或镰刀"
 }
