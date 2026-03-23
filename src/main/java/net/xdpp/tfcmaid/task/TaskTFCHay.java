@@ -69,6 +69,10 @@ public class TaskTFCHay implements IFarmTask {
 
     @Override
     public boolean canHarvest(EntityMaid maid, BlockPos cropPos, BlockState cropState) {
+        if (!hasRequiredTools(maid)) {
+            return false;
+        }
+        
         if (!hasInventorySpace(maid)) {
             return false;
         }
