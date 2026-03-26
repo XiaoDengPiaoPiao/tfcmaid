@@ -112,30 +112,6 @@
 
 ---
 
-## ⚙️ **配置与使用指南**
-
-### **基本配置**
-1. **隙间绑定**：
-   ```yaml
-   # 隙间操作模式
-   gap_mode: whitelist  # 或 blacklist
- 
-   # 默认传输方向
-   default_flow: maid_to_chest
-   ```
-
-2. **任务设置**：
-   ```yaml
-   # 农业任务
-   farming:
-     enable_nutrition: true
-     auto_fertilize: true
- 
-   # 畜牧任务
-   animal:
-     require_feed_for_breed: true
-     gap_for_products: true
-   ```
 
 ### **故障排查**
 ```markdown
