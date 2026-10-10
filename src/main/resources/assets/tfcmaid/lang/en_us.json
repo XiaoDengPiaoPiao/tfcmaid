@@ -49,7 +49,7 @@
 
   "task.tfcmaid.tfc_panning": "Panning",
   "task.tfcmaid.tfc_panning.desc": "The maid will use a pan to pan for ores, need water source in working area.",
-  "task.tfcmaid.tfc_panning.condition.has_empty_pan": "Holding an empty pan in the main hand.",
+  "task.tfcmaid.tfc_panning.condition.has_pan": "Holding an empty or filled pan in the main hand.",
   "task.tfcmaid.tfc_panning.condition.has_pannable_in_inventory": "Has a pan with pannable items in inventory.",
   "task.tfcmaid.tfc_panning.progress": "Panning...",
 

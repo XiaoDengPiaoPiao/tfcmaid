@@ -55,7 +55,7 @@ public class TaskTFCPanning implements IMaidTask {
     @Override
     public @NotNull List<Pair<String, Predicate<EntityMaid>>> getConditionDescription(@NotNull EntityMaid maid) {
         return Lists.newArrayList(
-                Pair.of("has_empty_pan", this::hasEmptyPan),
+                Pair.of("has_pan", this::hasPan),
                 Pair.of("has_pannable_in_inventory", this::hasPannableItemOrFilledPan)
         );
     }
@@ -65,8 +65,9 @@ public class TaskTFCPanning implements IMaidTask {
         return true;
     }
 
-    private boolean hasEmptyPan(EntityMaid maid) {
-        return maid.getMainHandItem().getItem() instanceof EmptyPanItem;
+    private boolean hasPan(EntityMaid maid) {
+        return maid.getMainHandItem().getItem() instanceof EmptyPanItem
+                || maid.getMainHandItem().getItem() instanceof PanItem;
     }
 
     private boolean hasPannableItemOrFilledPan(EntityMaid maid) {
