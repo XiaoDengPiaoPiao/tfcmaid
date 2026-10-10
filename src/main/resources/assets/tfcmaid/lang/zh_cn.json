@@ -1,4 +1,6 @@
 {
+  "task.tfcmaid.tfc_refuel": "补充燃料",
+  "task.tfcmaid.tfc_refuel.desc": "用背包燃料补充工作范围内已点燃的群峦篝火、烤架、煮锅和木炭炉，不会自动点火。",
   "item.tfcmaid.farm_debug_wand": "作物调试器",
   "task.tfcmaid.tfc_shears": "剪毛",
   "task.tfcmaid.tfc_shears.desc": "女仆会剪羊毛和其他动物的毛",

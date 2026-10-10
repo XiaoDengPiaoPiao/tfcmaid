@@ -22,6 +22,7 @@ import net.xdpp.tfcmaid.task.TaskTFCLoom;
 import net.xdpp.tfcmaid.task.TaskTFCQuern;
 import net.xdpp.tfcmaid.task.TaskTFCBellows;
 import net.xdpp.tfcmaid.task.TaskTFCHay;
+import net.xdpp.tfcmaid.task.TaskTFCRefuel;
 import net.xdpp.tfcmaid.util.TfcCakeEdible;
 
 /**
@@ -52,6 +53,7 @@ public class TfcmaidExtension implements ILittleMaid {
         manager.add(new TaskTFCQuern());
         manager.add(new TaskTFCBellows());
         manager.add(new TaskTFCHay());
+        manager.add(new TaskTFCRefuel());
     }
 
     @Override
