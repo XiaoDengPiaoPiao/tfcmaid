@@ -49,7 +49,7 @@
 
   "task.tfcmaid.tfc_panning": "淘金筛矿",
   "task.tfcmaid.tfc_panning.desc": "女仆会使用淘金盘筛矿，工作范围4格内需要有水源才能进行",
-  "task.tfcmaid.tfc_panning.condition.has_empty_pan": "主手持有空淘金盘",
+  "task.tfcmaid.tfc_panning.condition.has_pan": "主手持有空淘金盘或已装料的淘金盘",
   "task.tfcmaid.tfc_panning.condition.has_pannable_in_inventory": "背包中有可筛物品",
 
   "task.tfcmaid.tfc_loom": "织姬",

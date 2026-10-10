@@ -87,6 +87,10 @@ public class MaidPanningTask extends MaidLongRunningTask {
         }
 
         ItemStack mainHand = maid.getMainHandItem();
+        if (mainHand.getItem() instanceof EmptyPanItem && gameTimeIn % 20 == 0) {
+            equipFilledPanFromInventory(maid);
+            mainHand = maid.getMainHandItem();
+        }
         if (!(mainHand.getItem() instanceof PanItem)) {
             return;
         }
